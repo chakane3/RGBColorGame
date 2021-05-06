@@ -26,7 +26,7 @@ struct colorGameModel {
         return myColor
     }
     
-    // find the dominant color
+    // find the dominant color (alpha included)
     func dominantColor(buttonOne: UIButton!, buttonTwo: UIButton!, buttonThree: UIButton!) -> CGFloat{
         let color1 = buttonOne.layer.backgroundColor!.components
         let color2  =  buttonTwo.layer.backgroundColor!.components
@@ -49,9 +49,4 @@ struct colorGameModel {
         let colorArr = color
         return colorArr!.reduce(0, +)
     }
-    
-    
-    
-    
-    
 }

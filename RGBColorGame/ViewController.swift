@@ -10,19 +10,29 @@ import UIKit
 class ViewController: UIViewController {
 
     
-
+// MARK: - Outlets and Properties
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
     @IBOutlet weak var buttonThree: UIButton!
-    
-    @IBOutlet weak var buttonViewOne: UIView!
-    @IBOutlet weak var buttonViewTwo: UIView!
-    @IBOutlet weak var buttonviewThree: UIView!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     var score: Int = 0
     var game = colorGameModel()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+
+        // set to random colors
+        buttonOne.backgroundColor = game.red
+        buttonTwo.backgroundColor = game.green
+        buttonThree.backgroundColor = game.blue
+    }
+    
+    
+    // MARK: - Actions
+    
+    // Setting changes to the view based on "game"
     @IBAction func changeColor(_ sender: UIButton) {
         switch sender.tag {
         case 0:
@@ -36,8 +46,6 @@ class ViewController: UIViewController {
             } else {
                 displayLabel.text = "try again"
             }
-            //buttonOne.backgroundColor = game.randomColor()
-            
     
         case 1:
             let selectedButton = game.getCGFloatFromButton(button: sender)
@@ -50,8 +58,6 @@ class ViewController: UIViewController {
                 displayLabel.text = "try again"
             }
 
-            //buttonTwo.backgroundColor = game.randomColor()
-
         case 2:
             
             let selectedButton = game.getCGFloatFromButton(button: sender)
@@ -63,9 +69,7 @@ class ViewController: UIViewController {
             } else {
                 displayLabel.text = "try again"
             }
-
-            //buttonThree.backgroundColor = game.randomColor()
-
+            
         default:
             print("nope")
         }
@@ -76,17 +80,8 @@ class ViewController: UIViewController {
         buttonTwo.backgroundColor = game.randomColor()
         buttonThree.backgroundColor = game.randomColor()
         displayLabel.text = "Choose the most dominant color"
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
-        // set to random colors
-        buttonViewOne.backgroundColor = game.red
-        buttonViewTwo.backgroundColor = game.green
-        buttonviewThree.backgroundColor = game.blue
-    }
 }
 
