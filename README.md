@@ -1,5 +1,7 @@
 # RGBColorGame
 
+<img src="https://media.giphy.com/media/KaWMvLxajTF8X4p71C/giphy.gif" width=250><br>
+
 The name of the game is generating and guessing random colors.
 
 Have the app generate and display a random color from RGB values.
@@ -46,11 +48,4 @@ let randNum = CGFloat.random(in: 0...1)
 Have the app keep track of the highest score (so long as it is running)
 
 
-### Bonus:
 
-
-Try to refactor any duplicated code into functions.
-
-The game is kinda easy. Change your code so that the random colors generated have rgb values that are closer together.
-
-Add the ability for the user to select the dificulty level. 
