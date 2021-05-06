@@ -9,38 +9,73 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
     @IBOutlet weak var buttonThree: UIButton!
     
+    @IBOutlet weak var buttonViewOne: UIView!
+    @IBOutlet weak var buttonViewTwo: UIView!
+    @IBOutlet weak var buttonviewThree: UIView!
+    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    var score: Int = 0
     var game = colorGameModel()
     
-    
-
-    
-
     @IBAction func changeColor(_ sender: UIButton) {
-        // let correctGuess = game.correctGuess()
         switch sender.tag {
         case 0:
-            buttonOne.backgroundColor = game.randomColor()
-
+            let selectedButton = game.getCGFloatFromButton(button: sender)
+            let correct = game.dominantColor(buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
+            if selectedButton == correct {
+                displayLabel.text = "Correct guess!"
+                score += 1
+                scoreLabel.text = String(score)
+                
+            } else {
+                displayLabel.text = "try again"
+            }
+            //buttonOne.backgroundColor = game.randomColor()
+            
+    
         case 1:
-            buttonTwo.backgroundColor = game.randomColor()
+            let selectedButton = game.getCGFloatFromButton(button: sender)
+            let correct = game.dominantColor(buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
+            if selectedButton == correct {
+                displayLabel.text = "Correct guess!"
+                score += 1
+                scoreLabel.text = String(score)
+            } else {
+                displayLabel.text = "try again"
+            }
+
+            //buttonTwo.backgroundColor = game.randomColor()
 
         case 2:
-            buttonThree.backgroundColor = game.randomColor()
-
             
+            let selectedButton = game.getCGFloatFromButton(button: sender)
+            let correct = game.dominantColor(buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
+            if selectedButton == correct {
+                displayLabel.text = "Correct guess!"
+                score += 1
+                scoreLabel.text = String(score)
+            } else {
+                displayLabel.text = "try again"
+            }
+
+            //buttonThree.backgroundColor = game.randomColor()
+
         default:
             print("nope")
         }
     }
     
     @IBAction func newGame(_ sender: Any) {
-        buttonOne.backgroundColor = game.red
-        buttonTwo.backgroundColor = game.green
-        buttonThree.backgroundColor = game.blue
+        buttonOne.backgroundColor = game.randomColor()
+        buttonTwo.backgroundColor = game.randomColor()
+        buttonThree.backgroundColor = game.randomColor()
+        displayLabel.text = "Choose the most dominant color"
         
     }
     
@@ -48,13 +83,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        // set the colors to red, green, blue
-        buttonOne.backgroundColor = game.red
-        buttonTwo.backgroundColor = game.green
-        buttonThree.backgroundColor = game.blue
-        
+        // set to random colors
+        buttonViewOne.backgroundColor = game.red
+        buttonViewTwo.backgroundColor = game.green
+        buttonviewThree.backgroundColor = game.blue
     }
-
-
 }
 
